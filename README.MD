@@ -77,4 +77,4 @@ If this was used as a public system where everyone was privy to how the encrypti
 
 3) From here launch main.py and follow the command line prompts that appear
 
-![](./image/encryption.JPG?raw=true) ![](./image/decryption.JPG?raw=true) ![](./image/producedCipher.JPG?raw=true)
+![](https://github.com/PeakyCryptos/abstractionCryptographySystem/blob/main/images/encryption.JPG?raw=true) ![](https://github.com/PeakyCryptos/abstractionCryptographySystem/blob/main/images/decryption.JPG?raw=true) ![](https://github.com/PeakyCryptos/abstractionCryptographySystem/blob/main/images/producedCipher.JPG?raw=true)
