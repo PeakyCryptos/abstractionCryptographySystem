@@ -3,11 +3,11 @@ abstractionCryptographySystem was a project created for a cryptography course th
 
 The format in which the submission was expected to be submitted to class was as follows: The cryptography system should not leverage any existing encryption systems/libraries, as our implementation was required to be solely our own work. Furthermore, the only information released to the class during the cracking phase would be the key used to encrypt that data, and the ciphertext that key produced. However, our decryption functionality was required to be fully functional. So, that it wasn't possible to cheat by producing a cipher that was unfeasible to reverse engineer. It was also a requirement that in the plain text which was subsequently encrypted, that we have the phrase "Ontario Tech University" embedded anywhere of our choosing. Furthermore, we were only allowed to use a predefined set of symbols/characters in our initial plaintext. Which I have outlined below as being what I used for the "Base Char List" in the encryption and decryption steps. 
 
-It should also be noted that this system was defined specifically for the task at hand. 'Reinventing the wheel' so as to speak with a new mathematical proof that could produce a truly uncrackable cipher is unfeasible. This cryptograpghy system relies heavily on abstraction from the original text to the final result. Going through a myraid of processes to make it near impossible to discren how the final result was achieved if someone was to just possess the key and ciphertext. Which really did show, as no one in the class we able to crack this using the information at hand. While I was able to crack the systems of two others. It is important to note though, as a public system this has some vulnerabilities which I speak about in the section below.   
+It should also be noted that this system was defined specifically for the task at hand. 'Reinventing the wheel' so as to speak with a new mathematical proof that could produce a truly uncrackable cipher is unfeasible. This cryptography system relies heavily on abstraction from the original text to the final result. Going through a myraid of processes to make it near impossible to discren how the final result was achieved if someone was to just possess the key and ciphertext. Which really did show, as no one in the class we able to crack this using the information at hand. While I was able to crack the systems of two others. It is important to note though, as a public system this has some vulnerabilities which I speak about in the section below.   
 
 
 ## Encryption Methodology
-1) I Created a char list that will be mapped to a number. The idea was taken from a UTF-8 encoding table which maps characters to a hexadecimal number.
+1) Created a char list that will be mapped to a number. The idea was taken from a UTF-8 encoding table which maps characters to a hexadecimal number.
 
 Base Char list:
 ```
@@ -34,7 +34,7 @@ So with key 100 the char '!' will be 100 // 2 + 0 = 50, then the next item is '#
 6) After the integer division and the increment we convert the number into octal and then reverse the octal string This is done to further obfuscate the encoding of the character. Then we Add "! !" to the beginning and end 
 of the encoded character block. So where we left off with '!' which was 50 it would become octal: 0o62, reversedis 26o0, then add "! !" to front and back, making the character the encoded string of '! !26o0! !'
 
-7) We denote that '~~' in the encoding table will denote a space between each character. so if you have 2 characters '!' and '#' that are '! !26o0! !' and '! !36o0! !' if they were passed in as plaintext '!#' then
+7) We denote that '\~\~' in the encoding table will denote a space between each character. so if you have 2 characters '!' and '#' that are '! !26o0! !' and '! !36o0! !' if they were passed in as plaintext '!#' then
 the cipher text will be: '! !26o0! !~~! !36o0! !'
 
 8) We convert the final encoded string character by character into hexadecimal. 
@@ -67,7 +67,7 @@ Base Char list:
 6) then the encoding list is reversed as now we are working with the cipher so where '!':'! !26o0!' was the mapping, We will have it reversed as '! !26o0!': '!' so that each char can be reversed back into its original form
 
 ## Vulnerabilities
-If this was used as a public system where everyone was privy to how the encryption and decryption processes work, then this system is suscepitble to brute force attacks. As they would just have to do all the encryption steps to reverse the text to the point where the base chars list is mapping to that key's relevant octal string. From there they could brute force different rotations of the char list until the mappings produce legible text. 
+If this was used as a public system where everyone was privy to how the encryption and decryption processes work, then this system is sucsepitble to brute force attacks. As they would just have to do all the encryption steps to reverse the text to the point where the base chars list is mapping to the specific key's relevant octal string. From there they could brute force different rotations of the char list until the mappings produces legible text. 
 
 ## How to Run
 
@@ -77,4 +77,4 @@ If this was used as a public system where everyone was privy to how the encrypti
 
 3) From here launch main.py and follow the command line prompts that appear
 
-![](encryption.JPG?raw=true) ![](decryption.JPG?raw=true) ![](producedCipher.JPG?raw=true)
+![](https://github.com/PeakyCryptos/abstractionCryptographySystem/blob/main/images/encryption.JPG?raw=true) ![](https://github.com/PeakyCryptos/abstractionCryptographySystem/blob/main/images/decryption.JPG?raw=true) ![](https://github.com/PeakyCryptos/abstractionCryptographySystem/blob/main/images/producedCipher.JPG?raw=true)

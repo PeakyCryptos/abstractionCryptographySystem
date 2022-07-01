@@ -1,15 +1,12 @@
-def tableDictDecryption(key,cipherText):
-    #KEY IS TRANSLATED FROM A STRING TO BINARY
+def tableDictDecryption(key, cipherText):
+    # KEY IS TRANSLATED FROM A STRING TO BINARY
     key = int(''.join(format(ord(x), 'b') for x in str(key)))
 
     # first decode the hex to utf-8 (string) characters before reversing the rest of the operations
     cipherText = bytes.fromhex(cipherText).decode('utf-8')
 
     # normal char table
-    chars = ['!','#','$','%','&','(',')','*','+',',','-','.','.','/','0', '1','2','3','4','5','6','7','8','9',':',';'
-    ,'<','=','>','?','@','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W',
-    'X','Y','Z','[','\\',']','^','_','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t',
-    'u','v','w','x','y','z','{','|','}','~']
+    chars = ['!', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';', '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W','X', 'Y', 'Z', '[', '\\', ']', '^', '_', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't','u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~']
 
     # shift the chars array using the key
     # to get the base char table that the encryption used
@@ -17,13 +14,14 @@ def tableDictDecryption(key,cipherText):
     chars = chars[-shiftAmount:] + chars[:-shiftAmount]
 
     # next recreate the mapping of characters to integer
-    # that the encryptor used 
+    # that the encryptor used
     encodingDict = {' ': ' '}
     for i in range(len(chars)):
-        encodingDict[chars[i]] = "! !"  + str(oct(key // 2 + i))[::-1] + "! !" 
+        encodingDict[chars[i]] = "! !" + str(oct(key // 2 + i))[::-1] + "! !"
 
     # now swap the key and value pairs to map the values to char
-    reverseEncodingDict = {str(value):key for key, value in encodingDict.items()}
+    reverseEncodingDict = {str(value): key for key,
+                           value in encodingDict.items()}
 
     # spaces in the cipherText are denoted by '~~'
     # remove these by splitting it into an array at '~~'
@@ -45,4 +43,4 @@ def tableDictDecryption(key,cipherText):
             mappedKey = str(reverseEncodingDict[char])
             cipherText[i] = mappedKey
 
-    return(''.join(cipherText))
+    return (''.join(cipherText))
