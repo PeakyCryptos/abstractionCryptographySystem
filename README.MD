@@ -77,4 +77,4 @@ If this was used as a public system where everyone was privy to how the encrypti
 
 3) From here launch main.py and follow the command line prompts that appear
 
-![](encryption.JPG?raw=true) ![](decryption.JPG?raw=true) ![](producedCipher.JPG?raw=true)
+![](./image/encryption.JPG?raw=true) ![](./image/decryption.JPG?raw=true) ![](./image/producedCipher.JPG?raw=true)
